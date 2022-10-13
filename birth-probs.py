@@ -17,10 +17,10 @@ def get_week(current_date, due_date):
             continue
         else:
             return key - 1
-    raise ValueError("Current date not valid")
+    raise ValueError("Current date is more than 2 weeks after due date")
 
 def compute_probs(cutoff):
-    assert cutoff > 0
+    assert cutoff > 0, "Provided due date is more than 42 weeks into the future"
     df = pandas.read_csv("births.csv")
     df.drop(df[df["weeks"] <= cutoff].index, inplace=True)
     df["cumprob"] = np.cumsum(df["counts"])/np.sum(df["counts"])
