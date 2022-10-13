@@ -20,3 +20,22 @@ overstate the probability of the first week if the week is not a full seven days
 and slightly understate the probability in the remaining weeks. This effect is only
 significant as the due date approaches and there is a high probability of the baby
 being born in the current week.
+
+## Data Source and Comments
+
+The data used to compute the probabilities is drawn from the UK Office for National Statistics
+User Guide to Birth Statistics (last accessed 2022/10/07):
+
+https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/methodologies/userguidetobirthstatistics
+
+The Excel file holding the data used in the calculation can be accessed at
+
+https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/healthandsocialcare/causesofdeath/bulletins/pregnancyandethnicfactorsinfluencingbirthsandinfantmortality/2015-10-14/88970d40.xls
+
+The file has been modified and saved in this repository as a CSV file.
+
+Weeks gestation is usually measured as the number weeks since the last menstrual cycle, with
+40 weeks used to estimate the due date. In the NHS in England and Wales, this is usually
+estimated instead by the length of the fetus measured at the 12 week ultrasound scan, as
+the fetus is usually a consistent size at this stage of pregnancy and the measurement can
+be used to more accurately estimate the due date.

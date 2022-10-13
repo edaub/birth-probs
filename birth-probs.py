@@ -21,9 +21,9 @@ def get_week(current_date, due_date):
 
 def compute_probs(cutoff):
     assert cutoff > 0
-    df = pandas.read_csv("births.csv", header=None)
-    df.drop(df[df[0] <= cutoff].index, inplace=True)
-    df[2] = np.cumsum(df[1])/np.sum(df[1])
+    df = pandas.read_csv("births.csv")
+    df.drop(df[df["weeks"] <= cutoff].index, inplace=True)
+    df["cumprob"] = np.cumsum(df["counts"])/np.sum(df["counts"])
     return df
 
 def print_probs(due_date):
@@ -33,7 +33,7 @@ def print_probs(due_date):
     date_dict = map_dates(due_date)
     print("Week Ending   Cumulative Probability")
     for i, row in df.iterrows():
-        print("{}    {}".format(date_dict[int(row[0])], row[2]))
+        print("{}    {}".format(date_dict[int(row["weeks"])], row["cumprob"]))
 
 def main():
     parser = argparse.ArgumentParser(description="compute birth probabilities")
